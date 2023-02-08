@@ -1,4 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+// import defaultImg from "../images/default-img.jpg";
+
+const makeSlice = (string) => {
+  if (string.length >= 60) {
+    return string.slice(0, 60) + "...";
+  }
+  return string;
+};
 
 function Card({ articles }) {
   return (
@@ -12,23 +20,28 @@ function Card({ articles }) {
             flexWrap: "wrap",
           }}
         >
-          {articles.map((article) => (
-            <NavLink
+          {articles.map(({ id, imageUrl, title, summary }) => (
+            <Link
               style={{
                 marginRight: "20px",
                 width: "200px",
                 textDecoration: "none",
                 color: "black",
               }}
-              to={`/article/${article.id}`}
-              key={article.id}
+              to={`/article/${id}`}
+              key={id}
             >
-              <img width="100px" src={article.imageUrl} alt={article.title} />
+              <img width="100px" src={imageUrl} alt={title} />
+              {/* {imageUrl ? (
+                <img width="100px" src={imageUrl} alt={title} />
+              ) : (
+                <img width="100px" src={defaultImg} alt={title} />
+              )} */}
               <li style={{ marginRight: "10px" }}>
-                {article.title}
-                <p>{`${article.summary.slice(0, 60)}...`} </p>
+                {title}
+                <p>{makeSlice(summary)}</p>
               </li>
-            </NavLink>
+            </Link>
           ))}
         </ul>
       )}

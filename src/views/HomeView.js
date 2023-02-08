@@ -1,10 +1,22 @@
 import { useState, useEffect } from "react";
-import Filter from "./Filter";
-import { fetchArticles, fetchArticleByFilter } from "../services/api";
+import FilterSearchForm from "./FilterSearchForm";
+import { fetchArticles, fetchArticleByQuery } from "../services/api";
 import Card from "./CardView";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// import axios from "axios";
 
 export default function HomeView() {
   const [articles, setArticles] = useState([]);
+  // console.log(articles);
+  const [query, setQuery] = useState("");
+  // const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // const handleLoadMore = () => {
+  //   setCurrentPage((prevPage) => prevPage + 1);
+  // };
 
   useEffect(() => {
     async function getArticles() {
@@ -15,28 +27,46 @@ export default function HomeView() {
     console.log("был fetch для всех ");
   }, []);
 
-  const submitHandler = (filter) => {
-    console.log(filter);
-    async function getArticle() {
-      const data = await fetchArticleByFilter(filter);
-      setArticles(data);
+  useEffect(() => {
+    if (!query) {
+      return;
     }
-    getArticle();
+    async function getArticlesByQuery() {
+      try {
+        setIsLoading(true);
+        const data = await fetchArticleByQuery(query);
+        setArticles(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    getArticlesByQuery();
+    console.log("был fetch по запросу ");
+  }, [query]);
+
+  const onChangeQuery = (query) => {
+    setQuery(query);
+    setArticles([]);
+    // setCurrentPage(1);
+    setError(null);
   };
 
-  // const filteredArticles = articles.filter((article) =>
-  //   article.title.includes(filter)
-  // );
-  // console.log(filteredArticles);
-
-  // const changeFitler = (event) => {
-  //   setFilter(event.target.value);
-  // };
+  // const loadMoreButton = articles.length > 0 && !isLoading;
 
   return (
     <>
-      <Filter onSubmit={submitHandler} />
+      {error && <h1>ERROR!</h1>}
+      <FilterSearchForm onSubmit={onChangeQuery} />
+      {isLoading && <p>LOADING</p>}
       <Card articles={articles} />
+      <ToastContainer autoClose={3000} />
+      {/* {loadMoreButton && (
+        <button type="button" onClick={handleLoadMore}>
+          Load more
+        </button>
+      )} */}
     </>
   );
 }
