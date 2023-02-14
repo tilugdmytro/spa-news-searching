@@ -12,7 +12,7 @@ function Card({ articles }) {
   return (
     <>
       <h2>Results: {articles.length}</h2>
-      {articles && (
+      {articles.length > 0 && (
         <ul
           style={{
             display: "flex",

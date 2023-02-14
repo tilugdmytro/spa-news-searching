@@ -1,54 +1,63 @@
 import { useState, useEffect } from "react";
 import FilterSearchForm from "./FilterSearchForm";
+import { useSelector, useDispatch } from "react-redux";
 import { fetchArticles, fetchArticleByQuery } from "../services/api";
+
+/// using re-export
+import { articlesOperations, articlesSelectors } from "../redux/articles";
+
 import Card from "./CardView";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import axios from "axios";
 
 export default function HomeView() {
-  const [articles, setArticles] = useState([]);
-  // console.log(articles);
+  // const [articles, setArticles] = useState([]);
   const [query, setQuery] = useState("");
   // const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const articles = useSelector(articlesSelectors.getArticles);
 
   // const handleLoadMore = () => {
   //   setCurrentPage((prevPage) => prevPage + 1);
   // };
 
   useEffect(() => {
-    async function getArticles() {
-      const data = await fetchArticles();
-      setArticles(data);
-    }
-    getArticles();
-    console.log("был fetch для всех ");
-  }, []);
+    dispatch(articlesOperations.fetchArticles());
+  }, [dispatch]);
 
-  useEffect(() => {
-    if (!query) {
-      return;
-    }
-    async function getArticlesByQuery() {
-      try {
-        setIsLoading(true);
-        const data = await fetchArticleByQuery(query);
-        setArticles(data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    getArticlesByQuery();
-    console.log("был fetch по запросу ");
-  }, [query]);
+  // useEffect(() => {
+  //   async function getArticles() {
+  //     const data = await fetchArticles();
+  //     setArticles(data);
+  //   }
+  //   getArticles();
+  //   console.log("был fetch для всех ");
+  // }, []);
+
+  // useEffect(() => {
+  //   if (!query) {
+  //     return;
+  //   }
+  //   async function getArticlesByQuery() {
+  //     try {
+  //       setIsLoading(true);
+  //       const data = await fetchArticleByQuery(query);
+  //       setArticles(data);
+  //     } catch (error) {
+  //       setError(error.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
+  //   getArticlesByQuery();
+  //   console.log("был fetch по запросу ");
+  // }, [query]);
 
   const onChangeQuery = (query) => {
     setQuery(query);
-    setArticles([]);
+    // setArticles([]);
     // setCurrentPage(1);
     setError(null);
   };

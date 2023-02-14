@@ -6,6 +6,7 @@ const searchResults = 15;
 export async function fetchArticles() {
   try {
     const { data } = await axios.get(`articles?_limit=${searchResults}`);
+    console.log("был fetch для всех ");
     console.log(data);
     return data;
   } catch (error) {
