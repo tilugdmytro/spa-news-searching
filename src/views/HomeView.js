@@ -17,7 +17,7 @@ export default function HomeView() {
   // const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const articles = useSelector(articlesSelectors.getArticles);
-  const isLoading = useSelector(articlesSelectors.getLoadingStatus);
+  const isLoading = useSelector(articlesSelectors.getIsLoading);
   const error = useSelector(articlesSelectors.getError);
 
   // const handleLoadMore = () => {

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 axios.defaults.baseURL = "https://api.spaceflightnewsapi.net/v3";
-const searchResults = 15;
+const searchResults = 10;
 
 export async function fetchArticles() {
   try {
