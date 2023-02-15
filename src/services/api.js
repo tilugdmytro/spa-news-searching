@@ -17,15 +17,18 @@ export async function fetchArticles() {
 export async function fetchArticleById(articleId) {
   try {
     const { data } = await axios.get(`articles/${articleId}`);
+    console.log("был fetch для одной ");
     return data;
   } catch (error) {
     console.error(error);
   }
 }
 
-export async function fetchArticleByQuery(query) {
+export async function fetchArticlesByQuery(query) {
   try {
     const { data } = await axios.get(`articles/?title_contains=${query}`);
+    console.log("был fetch по поиску ");
+
     console.log(data);
     return data;
   } catch (error) {

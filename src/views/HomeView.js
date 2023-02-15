@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import FilterSearchForm from "./FilterSearchForm";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchArticles, fetchArticleByQuery } from "../services/api";
 
-/// using re-export
+/////// using re-export
 import { articlesOperations, articlesSelectors } from "../redux/articles";
 
 import Card from "./CardView";
@@ -14,10 +13,12 @@ export default function HomeView() {
   // const [articles, setArticles] = useState([]);
   const [query, setQuery] = useState("");
   // const [currentPage, setCurrentPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const articles = useSelector(articlesSelectors.getArticles);
+  const isLoading = useSelector(articlesSelectors.getLoadingStatus);
+  const error = useSelector(articlesSelectors.getError);
 
   // const handleLoadMore = () => {
   //   setCurrentPage((prevPage) => prevPage + 1);
@@ -35,6 +36,13 @@ export default function HomeView() {
   //   getArticles();
   //   console.log("был fetch для всех ");
   // }, []);
+
+  useEffect(() => {
+    if (!query) {
+      return;
+    }
+    dispatch(articlesOperations.fetchArticlesByQuery(query));
+  }, [dispatch, query]);
 
   // useEffect(() => {
   //   if (!query) {
@@ -59,7 +67,7 @@ export default function HomeView() {
     setQuery(query);
     // setArticles([]);
     // setCurrentPage(1);
-    setError(null);
+    // setError(null);
   };
 
   // const loadMoreButton = articles.length > 0 && !isLoading;
