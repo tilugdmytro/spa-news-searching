@@ -1,3 +1,4 @@
+import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import HomeView from "./views/HomeView";
 import ArticleView from "./views/ArticleView";

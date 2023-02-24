@@ -8,7 +8,6 @@ import {
 
 const items = createReducer([], {
   // [articlesActions.fetchArticlesSuccess]: (_, action) => action.payload,
-
   [fetchArticles.fulfilled]: (_, action) => action.payload,
   [fetchArticleById.fulfilled]: (_, action) => action.payload,
   [fetchArticlesByQuery.fulfilled]: (_, action) => action.payload,
@@ -43,6 +42,18 @@ export default combineReducers({
 //   initialState: { items: [], isLoading: false, error: null },
 //   extraReducers: {
 //     [fetchArticles.fulfilled]: (state, action) => {
+//       return {
+//         ...state,
+//         items: action.payload,
+//       };
+//     },
+//     [fetchArticleById.fulfilled]: (state, action) => {
+//       return {
+//         ...state,
+//         items: action.payload,
+//       };
+//     },
+//     [fetchArticlesByQuery.fulfilled]: (state, action) => {
 //       return {
 //         ...state,
 //         items: action.payload,

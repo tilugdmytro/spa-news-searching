@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from "react-router-dom";
 // import defaultImg from "../images/default-img.jpg";
 

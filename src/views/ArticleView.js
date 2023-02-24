@@ -4,14 +4,25 @@ import { useParams, useNavigate } from "react-router-dom";
 // import { fetchArticleById } from "../services/api";
 import { useSelector, useDispatch } from "react-redux";
 /////// using re-export
-import { articlesOperations, articlesSelectors } from "../redux/articles";
+// import { articlesOperations, articlesSelectors } from "../redux/articles";
+
+import * as articlesOperations from "../redux/articles/articlesOperations";
+import * as articlesSelectors from "../redux/articles/articlesSelectors";
+
+
+import Button from "@mui/material/Button";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function ArticleView() {
-  const { articleId } = useParams();
   // const [article, setArticle] = useState(null);
+  const { articleId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const article = useSelector(articlesSelectors.getArticles);
+
+  useEffect(() => {
+    dispatch(articlesOperations.fetchArticleById(articleId));
+  }, [articleId, dispatch]);
 
   // useEffect(() => {
   //   async function getArticleById() {
@@ -21,10 +32,6 @@ export default function ArticleView() {
   //   getArticleById();
   //   console.log("был fetch для одной ");
   // }, [articleId]);
-
-  useEffect(() => {
-    dispatch(articlesOperations.fetchArticleById(articleId));
-  }, [articleId, dispatch]);
 
   const onGoBack = () => {
     navigate(`/`);
@@ -37,9 +44,14 @@ export default function ArticleView() {
           <img width="200" src={article.imageUrl} alt={article.title} />
           <h2>{article.title}</h2>
           <p>{article.summary}</p>
-          <button type="button" onClick={onGoBack}>
+          <Button
+            color="inherit"
+            startIcon={<ArrowBackIcon />}
+            sx={{ textTransform: "none" }}
+            onClick={onGoBack}
+          >
             Back to homepage
-          </button>
+          </Button>
         </>
       )}
     </>

@@ -1,20 +1,23 @@
+import React from 'react';
 import { useState, useEffect } from "react";
-import FilterSearchForm from "./FilterSearchForm";
+import SearchForm from "./SearchForm";
 import { useSelector, useDispatch } from "react-redux";
-
 /////// using re-export
-import { articlesOperations, articlesSelectors } from "../redux/articles";
+// import { articlesOperations, articlesSelectors } from "../redux/articles";
+
+import * as articlesOperations from "../redux/articles/articlesOperations";
+import * as articlesSelectors from "../redux/articles/articlesSelectors";
 
 import Card from "./CardView";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// import Header from "../components/Header";
 
 export default function HomeView() {
   // const [articles, setArticles] = useState([]);
-  const [query, setQuery] = useState("");
-  // const [currentPage, setCurrentPage] = useState(1);
   // const [isLoading, setIsLoading] = useState(false);
   // const [error, setError] = useState(null);
+  const [query, setQuery] = useState("");
   const dispatch = useDispatch();
   const articles = useSelector(articlesSelectors.getArticles);
   const isLoading = useSelector(articlesSelectors.getIsLoading);
@@ -74,8 +77,9 @@ export default function HomeView() {
 
   return (
     <>
+      {/* <Header /> */}
       {error && <h1>ERROR!</h1>}
-      <FilterSearchForm onSubmit={onChangeQuery} />
+      <SearchForm onSubmit={onChangeQuery} />
       {isLoading && <p>LOADING</p>}
       <Card articles={articles} />
       <ToastContainer autoClose={3000} />
