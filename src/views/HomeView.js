@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useState, useEffect } from "react";
 import SearchForm from "./SearchForm";
 import { useSelector, useDispatch } from "react-redux";
