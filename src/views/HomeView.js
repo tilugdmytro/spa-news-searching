@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as articlesOperations from "../redux/articles/articlesOperations";
 import * as articlesSelectors from "../redux/articles/articlesSelectors";
 
-import Card from "./CardView";
+import CardView from "./CardView";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import Header from "../components/Header";
@@ -81,7 +81,7 @@ export default function HomeView() {
       {error && <h1>ERROR!</h1>}
       <SearchForm onSubmit={onChangeQuery} />
       {isLoading && <p>LOADING</p>}
-      <Card articles={articles} />
+      <CardView articles={articles} />
       <ToastContainer autoClose={3000} />
       {/* {loadMoreButton && (
         <button type="button" onClick={handleLoadMore}>
