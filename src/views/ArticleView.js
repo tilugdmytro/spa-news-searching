@@ -46,7 +46,7 @@ export default function ArticleView() {
           <Button
             color="inherit"
             startIcon={<ArrowBackIcon />}
-            sx={{ textTransform: "none" }}
+            sx={{ textTransform: "none", fontWeight: 700 }}
             onClick={onGoBack}
           >
             Back to homepage
