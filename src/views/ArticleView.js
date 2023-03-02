@@ -33,7 +33,7 @@ export default function ArticleView() {
   // }, [articleId]);
 
   const onGoBack = () => {
-    navigate(`/`);
+    navigate(`/spa-news-searching`);
   };
 
   return (

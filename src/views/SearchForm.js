@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { TextField, InputAdornment } from "@mui/material";
-import TravelExploreIcon from "@mui/icons-material/TravelExplore";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function FilterSearchForm({ onSubmit }) {
   const [query, setQuery] = useState("");
@@ -24,22 +24,18 @@ export default function FilterSearchForm({ onSubmit }) {
     <>
       <form onSubmit={handleSubmit}>
         <TextField
-          label="Search for article"
+          label="Search for an article"
           value={query}
           onChange={handleChange}
           autoComplete="off"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <TravelExploreIcon />
+                <SearchIcon />
               </InputAdornment>
             ),
           }}
         />
-        {/* <label>
-          Search for article
-          <input type="text" value={query} onChange={handleChange} />
-        </label> */}
       </form>
     </>
   );
