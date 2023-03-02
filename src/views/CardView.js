@@ -13,14 +13,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
-
-// import defaultImg from "../images/default-img.jpg";
-
-// const result = parseISO("2023-02-28T17:23:00.000Z");
-// console.log(result);
-
-// const today = format(result, );
-// console.log(today);
+import { Transform } from "@mui/icons-material";
 
 const dateChange = (string) => {
   const parsedStr = parseISO(string);
@@ -38,7 +31,7 @@ const makeSlice = (string) => {
 function CardView({ articles }) {
   return (
     <>
-      {/* <h2>Results: {articles.length}</h2> */}
+      <h2>Results: {articles.length}</h2>
 
       <Grid container spacing={2}>
         {articles.length > 0 &&
@@ -50,6 +43,11 @@ function CardView({ articles }) {
                   height: 500,
                   display: "flex",
                   flexWrap: "wrap",
+                  transition: "transform 0.25s",
+                  "&:hover": {
+                    transform: "scale(1.04)",
+                    boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px;",
+                  },
                 }}
               >
                 <CardMedia

@@ -14,7 +14,7 @@ export default function FilterSearchForm({ onSubmit }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (query.trim() === "") {
-      return toast.error("Введите запрос!");
+      return toast.error("Enter the query!");
     }
     setQuery("");
     onSubmit(query);

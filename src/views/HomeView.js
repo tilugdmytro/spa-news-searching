@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import SearchForm from "./SearchForm";
 import { useSelector, useDispatch } from "react-redux";
+import { LinearProgress, Box } from "@mui/material/";
 /////// using re-export
 // import { articlesOperations, articlesSelectors } from "../redux/articles";
 
@@ -11,7 +12,6 @@ import * as articlesSelectors from "../redux/articles/articlesSelectors";
 import CardView from "./CardView";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import Header from "../components/Header";
 
 export default function HomeView() {
   // const [articles, setArticles] = useState([]);
@@ -80,7 +80,11 @@ export default function HomeView() {
       {/* <Header /> */}
       {error && <h1>ERROR!</h1>}
       <SearchForm onSubmit={onChangeQuery} />
-      {isLoading && <p>LOADING</p>}
+      {isLoading && (
+        <Box sx={{ width: "100%" }}>
+          <LinearProgress />
+        </Box>
+      )}
       <CardView articles={articles} />
       <ToastContainer autoClose={3000} />
       {/* {loadMoreButton && (
