@@ -46,8 +46,7 @@ function CardView({ articles }) {
               <Grid item xs={12} sm={6} md={4} lg={3} key={id}>
                 <Card
                   sx={{
-                    maxWidth: 400,
-                    minHeight: 550,
+                    height: "100%",
                     display: "flex",
                     flexWrap: "wrap",
                     transition: "transform 0.25s",
