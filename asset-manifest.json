@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/spa-news-searching/static/css/main.6332dac0.css",
-    "main.js": "/spa-news-searching/static/js/main.85eda349.js",
-    "index.html": "/spa-news-searching/index.html",
-    "main.6332dac0.css.map": "/spa-news-searching/static/css/main.6332dac0.css.map",
-    "main.85eda349.js.map": "/spa-news-searching/static/js/main.85eda349.js.map"
+    "main.css": "/spaceflight-news-spa/static/css/main.6332dac0.css",
+    "main.js": "/spaceflight-news-spa/static/js/main.9e6b4a3a.js",
+    "index.html": "/spaceflight-news-spa/index.html",
+    "main.6332dac0.css.map": "/spaceflight-news-spa/static/css/main.6332dac0.css.map",
+    "main.9e6b4a3a.js.map": "/spaceflight-news-spa/static/js/main.9e6b4a3a.js.map"
   },
   "entrypoints": [
     "static/css/main.6332dac0.css",
-    "static/js/main.85eda349.js"
+    "static/js/main.9e6b4a3a.js"
   ]
 }
