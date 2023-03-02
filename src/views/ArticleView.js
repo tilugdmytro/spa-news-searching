@@ -33,7 +33,7 @@ export default function ArticleView() {
   // }, [articleId]);
 
   const onGoBack = () => {
-    navigate(`/spa-news-searching`);
+    navigate(`/spaceflight-news-spa`);
   };
 
   return (
