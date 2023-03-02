@@ -38,7 +38,7 @@ const makeSlice = (string) => {
 function CardView({ articles }) {
   return (
     <>
-      <h2>Results: {articles.length}</h2>
+      {/* <h2>Results: {articles.length}</h2> */}
 
       <Grid container spacing={2}>
         {articles.length > 0 &&

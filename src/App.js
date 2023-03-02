@@ -9,7 +9,7 @@ function App() {
     <>
       <Container style={{ padding: "50px 75px 63px 75px" }} maxWidth="false">
         <Routes>
-          <Route path="/spa-news-searching" index element={<HomeView />} />
+          <Route path="/spaceflight-news-spa" index element={<HomeView />} />
           <Route path="/article/:articleId" element={<ArticleView />} />
         </Routes>
       </Container>

@@ -28,6 +28,7 @@ export default function FilterSearchForm({ onSubmit }) {
           value={query}
           onChange={handleChange}
           autoComplete="off"
+          sx={{ mb: 4 }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
