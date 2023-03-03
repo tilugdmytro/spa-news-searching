@@ -77,7 +77,6 @@ export default function HomeView() {
 
   return (
     <>
-      {/* <Header /> */}
       {error && <h1>ERROR!</h1>}
       <SearchForm onSubmit={onChangeQuery} />
       {isLoading && (

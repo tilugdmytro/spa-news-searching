@@ -79,7 +79,7 @@ function CardView({ articles }) {
 
                     <Typography
                       variant="h5"
-                      component="p"
+                      component="h2"
                       sx={{
                         mb: 2,
                       }}
